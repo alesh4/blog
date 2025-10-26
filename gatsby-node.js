@@ -6,6 +6,7 @@
 
 const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
+//const wordCount = require('./src/utils/word-count')
 
 // Define the template for blog post
 const blogPost = path.resolve(`./src/templates/blog-post.js`)
@@ -25,6 +26,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           fields {
             slug
           }
+          rawMarkdownBody
         }
       }
     }
@@ -46,6 +48,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (posts.length > 0) {
     posts.forEach((post, index) => {
+      const wordCount = calculateWordCount(post.rawMarkdownBody)
+      console.log(`Post: ${post.fields.slug} - Word count: ${wordCount}`)
       const previousPostId = index === 0 ? null : posts[index - 1].id
       const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
 
@@ -122,4 +126,9 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String
     }
   `)
+}
+
+// Word count utility function
+function calculateWordCount(text) {
+  return text.split(/\s+/).filter(Boolean).length;
 }
