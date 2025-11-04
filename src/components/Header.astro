@@ -1,0 +1,139 @@
+---
+import { SITE_TITLE } from '../consts';
+import HeaderLink from './HeaderLink.astro';
+import ThemeIcon from './ThemeIcon.astro';
+---
+
+<header class="header">
+	<div style="display:flex; flex-wrap">
+		<h1>My Blog</h1>
+		<div style="position:absolute; right:10px; top:35px"><ThemeIcon></ThemeIcon></div>
+	</div>
+    <nav style="display:flex; flex-wrap: wrap; justify-content: center; min-height: 4rem;">
+      <ul class="nav__list nav-container menu-content">
+        <li class="nav__item nav__entry"><a href="/development">Development</a></li>
+        <li class="nav__item nav__entry"><a href="/documentation">Documentation</a></li>
+		<li class="nav__item nav__entry"><a href="/shortcodes">Shortcodes</a></li>
+        <!--<li class="site-nav__item"><a href="/features">Features</a></li>
+        <li class="site-nav__item"><a href="/shortcodes">Shortcodes</a></li>
+        <li class="site-nav__item"><a href="/usage">Usage</a></li>
+        <li class="site-nav__item"><a href="https://github.com/your-repo" target="_blank">GitHub Profile</a></li>-->
+      </ul>
+    </nav>
+	<!-- look up these classes
+	wrapper dark-mode-dim 
+	-->
+</header>
+<style>
+	h2 {
+		margin: 0;
+		font-size: 1em;
+	}
+
+	h2 a,
+	h2 a.active {
+		text-decoration: none;
+	}
+	nav {
+		background-color: #112b3c;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	nav a {
+		padding: 1em 0.5em;
+		color: var(--black);
+		border-bottom: 4px solid transparent;
+		text-decoration: none;
+	}
+	nav a.active {
+		text-decoration: none;
+		border-bottom-color: var(--accent);
+	}
+	.social-links,
+	.social-links a {
+		display: flex;
+	}
+	.nav-container{
+	    width: 100%;
+    	max-width: var(--maxWidth-4xl);
+    	margin: 0 auto;
+    	padding: 1.25rem;
+		display: flex;
+		justify-content: center;
+	}
+	header > div {
+		/*width: 100%;*/
+		margin: 0 auto;
+    	max-width: var(--maxWidth-4xl);
+		position: relative;
+		justify-content: center;
+	}
+	header > div > h1{
+		display: inline-block;
+		color: #f8f9fa;
+		text-align: center;
+		/*width: 100%;*/
+    	/*max-width: var(--maxWidth-4xl);*/
+	}
+
+	.nav__entry {
+		border: 1px solid;
+		border-radius: 0.15rem;
+		border-color: white;
+	}
+
+	.gdoc-nav__entry,
+	.gdoc-language__entry {
+		flex: 1;
+		color: var(--body-font-color)
+	}
+
+	.nav__entry:hover,
+	.nav__entry.is-active,
+	.language__entry:hover {
+		background-color: rgb(32, 83, 117);
+	}
+
+	li:hover {
+		background-color: rgb(32, 83, 117);
+	}
+
+	.nav__entry:visited,
+	.language__entry:visited {
+		color: var(--body-font-color)
+	}
+
+	.site-nav {
+  margin-top: calc(var(--spacing-unit) * 0.75);
+}
+.nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  gap: var(--spacing-unit);
+}
+
+.nav__item a {
+  /*color: var(--header-font-color);*/
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  transition: background-color 0.2s, color 0.2s;
+}
+.nav__item a:hover,
+.nav__item a:focus {
+  /*background-color: var(--accent-color);*/
+  color: var(--body-background);
+  border-radius: 4px;
+}
+
+	@media (max-width: 720px) {
+		.social-links {
+			display: none;
+		}
+	}
+</style>
