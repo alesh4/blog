@@ -278,4 +278,6 @@ table th {
 
 main {
   flex-grow: 1;
+  max-width: var(--maxWidth-4xl);
+  margin: auto;
 }
